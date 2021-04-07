@@ -1,0 +1,3 @@
+<view wx:if="{{ categoryId !== null }}"  class="goods-container">
+  <goods id="goodsComp" limit="10" cid="{{ categoryId }}"></goods>
+</view>

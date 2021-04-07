@@ -1,0 +1,94 @@
+<view class="goodsDetail-container">
+  <swiper class="goodsDetail-swiper" indicator-dots="true" indicator-color="#e89abe" indicator-active-color="#FFF" autoplay circular>
+    <swiper-item wx:for="{{ pics }}" wx:key="id">
+      <image mode="aspectFill" src="{{ item.picUrl }}"></image>
+    </swiper-item>
+  </swiper>
+  <view class="goodsDetail-price">
+    <view class="price">¥{{ goodsDetail.current_price ? goodsDetail.current_price : goodsDetail.original_price }}</view>
+    <view class="name">{{ goodsDetail.name }}</view>
+    <van-cell value="" bindtap="choiceSku"  is-link>
+      <view slot="title">
+        <text class="text">规格</text>
+        <view class="choice">{{ selectStr === '' ? '请选择' : selectStr}}</view>
+      </view>
+    </van-cell>
+    <van-cell value=""  is-link>
+        <view slot="title">
+          <text class="text">服务</text>
+          <view class="choice">七天无理由退货</view>
+        </view>
+    </van-cell>
+  </view>
+  <view class="goodsDetail-content">
+    <rich-text nodes="{{ content }}"></rich-text>
+  </view>
+  <van-popup
+    show="{{ show }}"
+    closeable
+    class="goods-pop"
+    position="bottom"
+    bind:close="choiceSku"
+  >
+    <view class="pop-wrapper">
+      <view class="goods-img">
+        <image src="{{ goodsDetail.picUrl }}"></image>
+        <view class="price-wrapper">
+          <text class="goods-price">价格: ¥{{ currentSku ? currentSku.price : '--' }}</text>
+          <text class="choice-sku" wx:if="{{ selectStr === '' }}">请选择规格属性</text>
+          <text class="choice-sku" wx:else>{{ selectStr }}</text>
+        </view>
+      </view>
+      <view class="goods-sku">
+        <view class="sku-wrapper" wx:for="{{ skuList }}" wx:key="id">
+          <view class="sku-name">{{ item.name }}</view>
+          <view class="sku-list">
+            <view 
+              class="sku-item {{ selectSpec[item.id] == val.id ? 'selected' : '' }} {{ val.disabled ? 'disabled' : '' }} key-{{ val.key_id }}" 
+              id="sku-{{ val.id }}" 
+              wx:for="{{ item.goods_skus }}" 
+              bindtap="tapSku" 
+              data-index="{{item.id}}" 
+              data-id="{{val.id}}" 
+              data-selected="{{ val.selected }}" 
+              data-disabled="{{ val.disabled }}" 
+              wx:key="id" 
+              wx:for-index="idx" 
+              wx:for-item="val">
+                {{ val.name }}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="goods-num">
+        <view class="num-name">数量</view>
+        <van-stepper class="goods-ste" bind:change="changeNum" max="{{ maxNum }}" value="{{ num }}" integer />
+      </view>
+      <van-goods-action>
+        <van-goods-action-button
+          text="加入购物车"
+          type="warning"
+          open-type="getUserInfo"
+          wx:if="{{ !wxLogined }}"
+          bindgetuserinfo="login"
+        /> 
+        <van-goods-action-button
+          wx:else
+          text="加入购物车"
+          type="warning"
+          bind:click="addCar"
+        />
+        <van-goods-action-button open-type="getUserInfo"
+          wx:if="{{ !wxLogined }}" text="立即购买" />
+        <van-goods-action-button wx:else text="立即购买" bind:click="buyGoods" />
+      </van-goods-action>
+    </view>
+  </van-popup>
+  <van-goods-action>
+    <van-goods-action-icon icon="shop-o" link-type="switchTab" url="/pages/index/index" text="首页" />
+    <van-goods-action-icon icon="chat-o" text="客服" dot />
+    <van-goods-action-icon icon="cart-o" link-type="switchTab" url="/pages/shop-car/index" text="购物车" info="{{ goodsNum }}" />
+    <van-goods-action-button bindtap="choiceSku" text="加入购物车" type="warning" />
+    <van-goods-action-button bindtap="choiceSku" text="立即购买" />
+</van-goods-action>
+</view>

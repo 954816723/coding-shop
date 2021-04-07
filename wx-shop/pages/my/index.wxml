@@ -1,0 +1,41 @@
+<view class="my-container">
+  <view class="my-header">
+    <image mode="aspectFill" src="../../static/images/my-bg.png" class="my-bg"></image>
+    <view class="header-wrapper">
+     <view class="open-btn">
+      <view class="avatar-wrapper">
+        <open-data class="avatar" type="userAvatarUrl"></open-data>
+      </view>
+      <open-data class="nickname" type="userNickName"></open-data>
+     </view>
+     <view class="vip" bindtap="openVip">
+       <image src="../../static/images/vip.png"></image>
+       <text>VIP</text>
+     </view>
+    </view>
+  </view>
+  <view class="my-card">
+    
+  </view>
+  <view class="my-order">
+    <van-grid column-num="5">
+      <van-grid-item icon="label-o" text="全部订单" />
+      <van-grid-item icon="paid" text="待付款" />
+      <van-grid-item icon="send-gift-o" text="待发货" badge="" />
+      <van-grid-item icon="logistics" text="已发货" />
+      <van-grid-item icon="comment-o" text="待评价" />
+    </van-grid>
+  </view>
+  <view class="my-service">
+    <view class="service">我的服务</view>
+    <van-grid border="{{false}}" column-num="5">
+      <van-grid-item icon="service-o" icon-color="#FF7F50" text="联系客服" />
+      <van-grid-item icon="location-o" url="/pages/address/index" icon-color="#FF7F50" text="地址管理" />
+      <van-grid-item icon="gift-o" icon-color="#FF7F50" text="我的积分" />
+      <van-grid-item icon="balance-pay" icon-color="#FF7F50" text="申请发票" />
+      <van-grid-item icon="balance-list-o" icon-color="#FF7F50" text="开票记录" />
+      <van-grid-item icon="coupon-o" icon-color="#FF7F50" text="优惠券" />
+    </van-grid>
+  </view>
+  <view class="my-fav"></view>
+</view>

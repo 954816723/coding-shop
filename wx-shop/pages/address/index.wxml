@@ -1,0 +1,28 @@
+<wxs src="../../wxs//utils.wxs" module="utils"></wxs>
+
+<view class="address-container">
+  <view class="address-wrapper">
+    <scroll-view scroll-y="true" class="scroll-y-address" enable-flex="{{true}}">
+      <view class="address-item" wx:for="{{ addressList }}" wx:key="id">
+        <view class="address-box address-name">
+          <text class="name">{{ item.user_name }}</text>
+          <view class="default" wx:if="{{ item.is_default === 1 }}">默认</view>
+        </view>
+        <view class="address-box address-info" data-index="{{index}}" bindtap="choiceAddress">
+          <view class="address-tel">{{ item.tel }}</view>
+          <view class="address-detail">
+            {{ utils.joinArr(item.region, '') }}{{ item.detail_info }}
+          </view>
+        </view>
+        <view class="address-box address-edit" data-index="{{index}}" bindtap="edit">
+          <van-icon name="edit" />
+        </view>
+      </view>
+    </scroll-view>
+    
+  </view>
+  <view class="address-add">
+    <van-button block class="address-btn" bindtap="createAddress" type="warning" plain>新建地址</van-button>
+    <van-button block class="address-btn" type="primary" plain>一键导入微信地址</van-button>
+  </view>
+</view>

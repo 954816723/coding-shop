@@ -1,0 +1,43 @@
+<wxs src="../../wxs/utils.wxs" module="utils"></wxs>
+
+<view class="car-container">
+  <view class="car-wrapper">
+    <view wx:if="{{ wxLogined }}">
+      <view class="car-list">
+        <van-swipe-cell class="van-del" right-width="{{ 65 }}" wx:for="{{ carList }}" wx:key="id">
+          <view class="car-item">
+            <van-checkbox class="goods-select" value="{{ item.checked }}" data-index="{{ index }}" bind:change="onChange"></van-checkbox>
+            <view class="goods-detail">
+              <image class="goods-img" src="{{ item.wx_good.picUrl }}"></image>
+              <view class="goods-r">
+                <text class="name">{{ item.wx_good.name }}</text>
+                <text class="desc">{{ item.sku_str }}</text>
+                <view class="price-num">
+                  <text class="price">¥{{ utils.fToy(item.goods_skudatum.price) }}</text>
+                  <van-stepper class="goods-ste" value="{{ item.goods_total }}" integer />
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="del-btn" bindtap="delGoods" data-id="{{ item.id }}" slot="right">删除</view>
+        </van-swipe-cell>
+      </view>
+    </view>
+    <view wx:else class="btn-wrapper">
+      <van-button class="login-btn" open-type="getUserInfo" bindgetuserinfo="login" type="danger">登录</van-button>
+    </view>
+  </view>
+  <van-submit-bar
+    price="{{ totalPrice }}"
+    button-text="提交订单"
+    bind:submit="onClickButton"
+    wx:if="{{ hasGoods }}"
+    tip="{{ true }}"
+  >
+  <van-checkbox value="{{ isSelectAll }}" bind:change="selectAll">全选</van-checkbox>
+  </van-submit-bar>
+  <view class="fav-goods">
+    <view class="fav-title">猜你喜欢</view>
+    <goods id="goodsComp" limit="10" pid="{{ currentCateId }}"></goods>
+  </view>
+</view>

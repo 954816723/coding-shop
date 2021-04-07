@@ -1,0 +1,18 @@
+<view class="category-container">
+  <scroll-view class="category-scroll" enable-flex="true" scroll-y="true">
+    <van-sidebar>
+      <van-sidebar-item wx:for="{{ categories }}" wx:key="id" data-id="{{ item.id }}" title="{{ item.name }}" bindtap="onCategoryClick"></van-sidebar-item>
+    </van-sidebar>
+  </scroll-view>
+  <scroll-view class="category-main" enable-flex="true">
+    <block wx:if="{{childCategories.length > 0}}">
+      <view wx:for="{{ childCategories }}" class="category-item" wx:key="id" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="tapCategory">
+        <image src="{{ item.icon }}"></image>
+        <view class="category-name">{{ item.name }}</view>
+      </view>
+    </block>
+    <block wx:else>
+      <van-empty class="category-empty" description="暂无分类" />
+    </block>
+  </scroll-view>
+</view>

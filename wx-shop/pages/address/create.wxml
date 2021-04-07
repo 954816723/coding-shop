@@ -1,0 +1,38 @@
+<view class="create-address">
+  <van-cell-group>
+    <van-field
+      value="{{ userName }}"
+      clearable
+      label="用户名"
+      maxlength="20"
+      border="{{false}}"
+      placeholder="请输入姓名"
+      bind:change="onChangeName"
+    />    
+    <van-field
+      value="{{ userTel }}"
+      clearable
+      label="手机"
+      maxlength="11"
+      type="number"
+      border="{{false}}"
+      placeholder="请输入手机号"
+      bind:change="onChangeTel"
+    />
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+      <van-cell title="省市区" value="{{region[0]}} {{region[1]}} {{region[2]}}" />
+    </picker>
+    <van-field
+      value="{{ userAddress }}"
+      clearable
+      label="详细地址"
+      border="{{false}}"
+      placeholder="请输入详细地址"
+      bind:change="onChangeAddress"
+    />
+  </van-cell-group>
+  <van-checkbox class="default" icon-size="28rpx" value="{{ checked }}" bind:change="siteDefault">设为默认地址</van-checkbox>
+  <view class="submit-btn">
+    <van-button class="sub-btn" bindtap="submit" plain type="primary">确认使用</van-button>
+  </view>
+</view>

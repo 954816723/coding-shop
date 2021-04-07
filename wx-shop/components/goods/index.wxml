@@ -1,0 +1,22 @@
+<view class="goods-wrapper">
+  <block wx:if="{{ !isEmpty }}">
+    <view class="goods-item" data-id="{{ item.id }}" bindtap="tapGoods" wx:for="{{ goods }}" wx:key="index">
+      <image mode="aspectFill" src="{{ item.picUrl }}"></image>
+      <view wx:if="{{ item.desc }}" class="goods-desc">{{ item.desc }}</view>
+      <view class="goods-name">{{ item.name }}</view>
+      <view class="goods-price">
+        <view class="current-price" wx:if="{{ item.current_price }}">¥{{ item.current_price  }}</view>
+        <view class="original_price {{ item.current_price ? 'del' : '' }}">¥{{ item.original_price }}</view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <van-empty description="暂无商品" />
+  </block>
+</view>
+<block wx:if="{{ isLoding }}">
+  <van-loading color="#FFB6C1" />
+</block>
+<block wx:if="{{ isMaxL }}">
+  <van-divider class="wx-van-divider" hairline contentPosition="center">底线</van-divider>
+</block>

@@ -1,0 +1,26 @@
+var joinArr = function(arr, separator) {
+  return arr.join(separator)
+}
+
+var fToy = function(x) {
+  if (x !== null) {
+    var xx = x / 100;
+    var f = Math.round(xx * 100) / 100;
+    var s = f.toString();
+    var rs = s.indexOf('.');
+    if (rs < 0) {
+        rs = s.length;
+        s += '.';
+    }
+    while (s.length <= rs + 2) {
+        s += '0';
+    }
+    return s;
+}
+return x;
+}
+
+module.exports = {
+  joinArr: joinArr,
+  fToy: fToy
+}

@@ -1,0 +1,51 @@
+<view class="container">
+  <view class="swiper-container">
+    <swiper indicator-dots="true" indicator-color="#e89abe" indicator-active-color="#FFF" autoplay circular>
+      <swiper-item wx:for="{{ banners }}" wx:key="id">
+        <image mode="aspectFill" bindtap="tapBanner" data-url="{{item.linkUrl}}" src="{{item.picUrl}}"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="category-container">
+    <scroll-view 
+      class="category-wrapper" 
+      scroll-x="true" 
+      scroll-with-animation="true" 
+      bindscroll="getLeft"
+      enable-flex="true">
+      <view class="category-list">
+        <view class="category-item" wx:for="{{ scrollCate.first }}" wx:key="id">
+          <image src="{{ item.icon }}"></image>
+          <view class="category-text">{{ item.name }}</view>
+        </view>
+      </view>      
+      <view class="category-list">
+        <view class="category-item" wx:for="{{ scrollCate.second }}" wx:key="id">
+          <image src="{{ item.icon }}"></image>
+          <view class="category-text">{{ item.name }}</view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="slide">
+      <view class="slide-bar">
+        <view style="width: {{ slideWidth }}rpx; margin-left: {{ marginLeft }}rpx" class="slide-show"></view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{ hasAd }}" class="ad-container">
+    <image mode="aspectFill" data-url="{{ advert.linkUrl }}" bindtap="tapBanner" src="{{ advert.picUrl }}"></image>
+  </view>
+  <view class="goods-container">
+    <view class="scroll-category">
+      <scroll-view scroll-x="true" class="scroll-view-x">
+        <view wx:for="{{ categories }}" wx:key="index" data-index="{{ index }}" data-id="{{ item.id }}" bindtap="tapScrollCate" class="scroll-category-item {{ active === index ? 'active' : '' }}">
+          <view class="category-name">{{ item.name }}</view>
+          <view class="category-desc">{{ item.remark }}</view>
+        </view>
+      </scroll-view>
+    </view>
+    <view wx:if="{{ currentCateId !== null }}" class="goods-list">
+      <goods id="goodsComp" limit="10" pid="{{ currentCateId }}"></goods>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,37 @@
+page{
+  width: 100vw;
+  height: 100vh;
+}
+.category-container{
+  width: 750rpx;
+  height: 100%;
+  display: flex;
+}
+.category-scroll{
+  width: 180rpx;
+  height: 100%;
+}
+.category-main{
+  display: flex;
+  flex: 1;
+  height: 100%;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.category-item{
+  width: 150rpx;
+  height: 240rpx;
+  box-sizing: border-box;
+  margin: 20rpx;
+}
+.category-item image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.category-name{
+  font-size: 24rpx;
+  text-align: center;
+}
+.category-empty{
+  width: 100%;
+}

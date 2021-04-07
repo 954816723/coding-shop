@@ -1,0 +1,53 @@
+<wxs src="../../wxs//utils.wxs" module="utils"></wxs>
+
+<view class="order-container">
+  <view wx:if="{{address}}" class="order-address">
+    <view class="address" bindtap="toAddress">
+      <view class="address-city">
+        <view class="default" wx:if="{{ address.is_default === 1 }}">默认</view>
+        <text class="city">{{ utils.joinArr(address.region, '') }}</text>
+      </view>
+      <view class="address-detail">{{ address.detail_info }}</view>
+      <view class="info">
+        <text class="name">{{ address.user_name }}</text>
+        <text class="tel">{{ address.tel }}</text>
+      </view>
+    </view>
+    <van-icon class="toAddress" name="arrow" />
+  </view>
+  <view wx:else class="order-address-add">
+    <van-button class="add-btn" bindtap="toAddress" plain type="warning">添加收货地址</van-button>
+  </view>
+  <view class="order-goods">
+    <view class="order-title">商品</view>
+    <van-card
+      wx:for="{{ goodsList }}"
+      wx:key="id"
+      custom-class="goods-item"
+      num="{{ item.goods_total }}"
+      price="{{ utils.fToy(item.price) }}"
+      desc="{{ item.desc }}"
+      title="{{ item.name }}"
+      thumb="{{ item.picUrl }}"
+    />    
+  </view>
+  <view class="order-detail">
+    <view class="detail-item">
+      <text>商品金额</text>
+      <text>¥{{ utils.fToy(totalPrice) }}</text>
+    </view>
+    <view class="detail-item">
+      <text>邮费</text>
+      <text>¥0.00</text>
+    </view>
+    <view class="detail-item">
+      <text>活动优惠</text>
+      <text>¥0.00</text>
+    </view>
+  </view>
+  <!-- <view class="order-clause"></view> -->
+  <view class="order-btn">
+    <view class="price">应付: ¥{{ utils.fToy(totalPrice) }}</view>
+    <view class="pay-btn">微信支付</view>
+  </view>
+</view>

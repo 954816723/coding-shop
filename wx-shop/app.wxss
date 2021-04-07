@@ -1,0 +1,12 @@
+@import './miniprogram_npm/@vant/weapp/common/index.wxss';
+
+page{
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.wx-van-divider{
+  width: 100%;
+}

@@ -1,0 +1,146 @@
+.order-container{
+  width: 750rpx;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 100rpx;
+  background-color: #F5F5F5;
+}
+.order-address{
+  width: 100%;
+  height: 180rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  background-color: #FFF;
+  justify-content: space-between;
+}
+.order-address::before, .order-address-add::before{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 6rpx;
+  background: repeating-linear-gradient(
+    45deg,
+    #ff6c6c 0,
+    #ff6c6c 20%,
+    transparent 0,
+    transparent 25%,
+    #1989fa 0,
+    #1989fa 45%,
+    transparent 0,
+    transparent 50%
+  );
+  background-size: 200rpx;
+  content: "";
+}
+.address{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-around;
+  padding: 20rpx;
+  flex: 1;
+}
+.address-city{
+  display: flex;
+  align-items: center;
+  height: 40rpx;
+}
+.tel{
+  margin-left: 20rpx;
+}
+.default{
+  background-color: red;
+  border-radius: 20rpx;
+  width: 80rpx;
+  height: 40rpx;
+  font-size: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+}
+.city{
+  margin-left: 20rpx;
+  font-size: 26rpx;
+}
+.address-detail{
+  font-size: 30rpx;
+}
+.order-address-add{
+  width: 100%;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  background-color: #FFF;
+  justify-content: center;
+  align-items: center;
+}
+.add-btn button{
+  width: 300rpx;
+  height: 70rpx;
+}
+.info{
+  font-size: 26rpx;
+}
+.toAddress{
+  width: 60rpx;
+  height: 100%;
+}
+.order-goods{
+  background-color: #FFF;
+}
+.order-title{
+  padding-left: 25rpx;
+  font-size: 28rpx;
+}
+.goods-item{
+  background-color: #FFF!important;
+}
+.order-detail{
+  width: 100%;
+  background-color: #FFF;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+  padding: 0 26rpx;
+}
+.detail-item{
+  width: 100%;
+  display: flex;
+  height: 80rpx;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 26rpx;
+}
+.order-btn{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+}
+.price{
+  width: 550rpx;
+  height: 100%;
+  background-color: #F5F5F5;
+  color: red;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: 30rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.pay-btn{
+  flex: 1;
+  height: 100%;
+  color: #FFF;
+  background-color: #3CB371;
+  display: flex;
+  font-size: 28rpx;
+  justify-content: center;
+  align-items: center;
+}
